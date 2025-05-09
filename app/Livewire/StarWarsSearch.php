@@ -38,9 +38,9 @@ class StarWarsSearch extends Component
                 'page' => $this->page,
             ]);
         if ($response->successful()) {
-            $this->people = $response->json()['results'] ?? [];
-            $this->previous = $response->json()['previous'] ?? null;
-            $this->next = $response->json()['next'] ?? null;
+            $this->people = $response->json('results', []);
+            $this->previous = $response->json('previous');
+            $this->next = $response->json('next');
         }
     }
 
